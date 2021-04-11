@@ -14,8 +14,13 @@
 			<div class="form-row">
 				<input type="number" id="mobile" class="form-input"
 					placeholder="Enter the 10 digit mobile">
-				<input type="text" id="email" class="form-input mail"
-					placeholder="Enter your email id">	
+			</div>
+
+			<div class="form-heading">Email Id Verification</div>
+
+			<div class="form-row">
+				<input type="text" id="email" class="form-input"
+					placeholder="Enter the Email Id">
 			</div>
 
 			<input type="button" class="btnSubmit" value="Send OTP"
@@ -24,6 +29,6 @@
 	</div>
 
 	<script src="jquery-3.2.1.min.js" type="text/javascript"></script>
-	<script src="verify.js"></script>
+	<script src="verification.js"></script>
 </body>
 </html>
