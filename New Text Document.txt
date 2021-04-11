@@ -1,0 +1,3 @@
+Thus is the final document created by me.
+In this we haved included jquery 
+and called the AJAX using the jquery method. 
