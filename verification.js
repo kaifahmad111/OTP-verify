@@ -38,14 +38,40 @@ function verifyOTP() {
 	$(".error").html("").hide();
 	$(".success").html("").hide();
 	var otp = $("#mobileOtp").val();
-	var otp1 = $("#emailOtp").val();	//email otp
-	console.log(otp,otp.length);
 	var input = {
 		"otp" : otp,
-		"otp1" : otp1,
 		"action" : "verify_otp"
 	};
-	if (otp.length == 4 && otp1.length == 6 && otp != null) {
+	if (otp.length == 4 && otp != null) {
+		$.ajax({
+			url : 'controller.php',
+			type : 'POST',
+			dataType : "json",
+			data : input,
+			success : function(response) {
+				$("." + response.type).html(response.message)
+				$("." + response.type).show();
+			},
+			error : function() {
+				alert("ss");
+			}
+		});
+	} else {
+		console.log(otp,otp.length);
+		$(".error").html('Either one or both OTP entered are wrong .')
+		$(".error").show();
+	}
+}
+
+function verifyOTP1() {
+	$(".errorEm").html("").hide();
+	$(".successEm").html("").hide();
+	var otp1 = $("#emailOtp").val();
+	var input = {
+		"otp1" : otp1,
+		"action" : "verify_otp1"
+	};
+	if (otp1.length == 6 && otp1 != null) {
 		$.ajax({
 			url : 'controller.php',
 			type : 'POST',

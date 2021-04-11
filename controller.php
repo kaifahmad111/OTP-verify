@@ -23,29 +23,28 @@ class Controller
                 require_once ("verification-form.php");
                 exit();
                 break;
-                //header('Location: verification-form.php');
-                // $message = "Your One Time Password is " . $otp;
-                
-                // try{
-                //     $response = $Textlocal->sendSms($numbers, $message, $sender);
-                //     require_once ("verification-form.php");
-                //     exit();
-                // }catch(Exception $e){
-                //     die('Error: '.$e->getMessage());
-                // }
-                
-                
+            
             case "verify_otp":
                 $otp = $_POST['otp'];
-                $otp1 = $_POST['otp1']; //email otp
                 
-                if ($otp == $_SESSION['session_otp'] && $otp1 == $_SESSION['email_otp']) {
-                    unset($_SESSION['session_otp']);
+                if ($otp == $_SESSION['session_otp']) {
+                    //unset($_SESSION['session_otp']);
                     echo json_encode(array("type"=>"success", "message"=>"Your mobile number is verified!"));
                 } else {
                     echo json_encode(array("type"=>"error", "message"=>"Mobile number verification failed"));
                 }
                 break;
+            
+            case "verify_otp1": //for Email OTP
+                $otp1 = $_POST['otp1']; //email otp
+                
+                if ($otp1 == $_SESSION['email_otp']) {
+                    //unset($_SESSION['email_otp']);
+                    echo json_encode(array("type"=>"successEm", "message"=>"Your Email is verified!"));
+                    } else {
+                        echo json_encode(array("type"=>"errorEm", "message"=>"Email id verification failed"));
+                    }
+                    break;    
         }
     }
 }

@@ -1,8 +1,8 @@
+
+
+<form id="frm-mobile-verification">
 <div class="error"></div>
 <div class="success"></div>
-<form id="frm-mobile-verification">
-<?php session_start(); ?>
-	
 	<div class="form-row">
 		<label>OTP is sent to Your Mobile Number</label>		
 	</div>
@@ -11,6 +11,12 @@
 		<input type="text"  id="mobileOtp" class="form-input" placeholder="Enter the MOBILE OTP">		
 	</div>
 
+	<div class="row">
+		<input id="verify" type="button" class="btnVerify" value="Verify mobile no." onClick="verifyOTP();">		
+	</div>
+
+	<div class="errorEm"></div>
+	<div class="successEm"></div>
 	<div class="form-row">
 		<label>OTP is sent to Your Email ID</label>		
 	</div>
@@ -20,6 +26,6 @@
 	</div>
 
 	<div class="row">
-		<input id="verify" type="button" class="btnVerify" value="Verify" onClick="verifyOTP();">		
+		<input id="verify" type="button" class="btnVerify" value="Verify Email Id" onClick="verifyOTP1();">		
 	</div>
 </form>
