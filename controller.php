@@ -19,7 +19,28 @@ class Controller
                 $otp1 = rand(100000, 999999);
                 $_SESSION['session_otp'] = $otp;
                 $_SESSION['email_otp'] = $otp1;
-                echo $otp.' '.$otp1;
+                //For Email
+                $subject = "Email: OTP";
+                $txt = "OTP: ".$otp1."";
+                $headers = "From: kaifa.infoseek@gmail.com" . "\r\n" .
+                            "CC: kaifahmad111@gmail.com";
+                ini_set("SMTP","smtp.gmail.com");
+                ini_set("smtp_port","587");
+                ini_set("sendmail_from","kaifa.infoseek@gmail.com");
+                ini_set("sendmail_path", "C:\xampp\sendmail\sendmail.exe -t");
+                            
+                mail($email,$subject,$txt,$headers);            
+                //For Email
+                        //echo $otp.' '.$otp1;
+                //For Mobile
+                #### 2Factor API Setting
+                $APIKey='0e32913f-9936-11eb-80ea-0200cd936042';
+                $OTPMessage="<p>We have sent an OTP to $mobile,<br>Please enter the same below</p>";
+
+                ### Send OTP
+                $API_Response_json=json_decode(file_get_contents("https://2factor.in/API/V1/$APIKey/SMS/$mobile_number/$otp"),false);
+                $VerificationSessionId= $API_Response_json->Details;
+                //For Mobile
                 require_once ("verification-form.php");
                 exit();
                 break;
